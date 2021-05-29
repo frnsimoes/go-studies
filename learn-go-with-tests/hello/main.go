@@ -1,20 +1,36 @@
 package main
 
-import (
-	"fmt"
-	"strings"
-)
-
 // helps with performance
 const englishHelloPrefix = "Hello, "
+const spanishHelloPrefix = "Hola, "
+const frenchHelloPrefix = "Bonjour, "
+const portugueseHelloPrefix = "Olá, "
 
-func Hello(name string) string {
+func greetingPrefix(language string) (prefix string) {
+
+	switch language {
+	case "French":
+		prefix = frenchHelloPrefix
+	case "Spanish":
+		prefix = spanishHelloPrefix
+	case "Portuguese":
+		prefix = portugueseHelloPrefix
+	default:
+		prefix = englishHelloPrefix
+	}
+
+	return
+}
+
+func Hello(name string, language string) string {
+
 	if name == "" {
 		name = "World"
 	}
-	return englishHelloPrefix + strings.Title(name)
+
+	return greetingPrefix(language) + CapitalizedName(name)
 }
 
 func main() {
-	fmt.Println(Hello("Fernando"))
+
 }
