@@ -1,12 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 // helps with performance
 const englishHelloPrefix = "Hello, "
 
 func Hello(name string) string {
-	return englishHelloPrefix + name
+	if name == "" {
+		name = "World"
+	}
+	return englishHelloPrefix + strings.Title(name)
 }
 
 func main() {
